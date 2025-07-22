@@ -2,7 +2,7 @@
 ;In the data memory,load 5 bytes from 40H to 44H with some hexadecimal values
 
 org 0000h
-	mov a,40h	;Load the hex value from 40H in the data memory to the Accumulator
+	mov a,40h	  ;Load the hex value from 40H in the data memory to the Accumulator
 	mov r0,#41h	;R0 will be used as a Pointer to the data memory at 41H
 	mov r1,#04h	;4 loaded here for comparison among 5 values
 here:	mov b,@r0	;Move the data being pointed at by R0 to the B register
