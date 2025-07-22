@@ -10,8 +10,8 @@ here:	mov b,@r0	      ;Move the data being pointed at by R0 to the B register
 	sjmp next	      ;This line executes if the values in Accumulator and B registers are equal
 label:	jc next		;If a<b, jump to "next", else continue with the upcoming instruction
 	xch a,b		;Since a>b because the carry was set, exchange the values in a and b to store the lower value in a
-next:	inc r0		;Increment the pointer to point to the next Byte
-	djnz r1,here	;Till R1 becomes #00H continue looping and iterating through the data memory
+next:	inc r0		 ;Increment the pointer to point to the next Byte
+	djnz r1,here	  ;Till R1 becomes #00H continue looping and iterating through the data memory
 end
 
 ;The smallest hexadeciaml value will be found in the accumulator
