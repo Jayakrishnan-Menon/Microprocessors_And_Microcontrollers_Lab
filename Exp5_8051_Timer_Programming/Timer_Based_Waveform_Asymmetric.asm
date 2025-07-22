@@ -1,4 +1,5 @@
-//Timer with 250 microsec on and 50 microsec off
+;Timer with 250 microsec on and 50 microsec off
+
 org 0000h
 
         mov tmod,#10h   ;Declare the usage of Timer 1 in mode 1
