@@ -8,8 +8,8 @@ org 0000h
 	mov a,#00h	;Initialize the Accumulator	
 here:   mov b,@r0	;Move the data being pointed at by R0 to the B register
 	add a,b		;Add a with b and store the result in a
-	inc r3		;Increment R3 value before the next iteration
-label : inc r0		;Increment the pointer to point to the next Byte
+	inc r3		 ;Increment R3 value before the next iteration
+label : inc r0		 ;Increment the pointer to point to the next Byte
 	djnz r2,here 	;Till R1 becomes #00H continue looping and iterating through the data memory
 	mov b,r3	;Move the number of bytes to B register for the upcoming division operation
 	div ab		;Perform the Division operation
