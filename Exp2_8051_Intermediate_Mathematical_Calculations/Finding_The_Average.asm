@@ -2,7 +2,7 @@
 ;In the data memory,load 10 bytes from 40H to 49H with some hexadecimal values
 
 org 0000h
-        mov r0,#40h    ;R0 will be used as a Pointer to the memory 40H
+        mov r0,#40h    ;R0 will be used as a Pointer to the data memory at 40H
 	mov r2,#0ah    ;Average of 10 values is computed
 	mov r3,#00h    ;R3 stores the number of values iterated through and is used later on in division
 	mov a,#00h
