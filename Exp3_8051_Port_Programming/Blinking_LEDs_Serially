@@ -1,4 +1,13 @@
-;Blink led connected to port p1 in a serial manner, one after the another
+;Blink led connected to port p1 one after the another in such a mannar:
+; 0 0 0 0 0 0 0 1
+; 0 0 0 0 0 0 1 0
+; 0 0 0 0 0 1 0 0
+; 0 0 0 0 1 0 0 0
+; 0 0 0 1 0 0 0 0
+; 0 0 1 0 0 0 0 0
+; 0 1 0 0 0 0 0 0
+; 1 0 0 0 0 0 0 0
+; 0 0 0 0 0 0 0 1
 
 org 0000h
 	      mov p1,#00h   ;Declare Port 1 as output
