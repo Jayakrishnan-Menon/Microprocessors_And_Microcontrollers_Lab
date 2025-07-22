@@ -1,4 +1,4 @@
-;Blink led connected to port p1 one after the another in such a mannar:
+;Blink leds connected to port p1 one after the another in such a mannar:
 ; 0 0 0 0 0 0 0 1
 ; 0 0 0 0 0 0 1 0
 ; 0 0 0 0 0 1 0 0
