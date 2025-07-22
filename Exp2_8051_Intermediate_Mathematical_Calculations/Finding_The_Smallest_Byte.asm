@@ -4,7 +4,7 @@
 org 0000h
 	mov a,40h
 	mov r0,#41h
-	mov r1,#04h
+	mov r1,#04h	;4 loaded here for comparison among 5 values
 here:	mov b,@r0
 	cjne a,b,label
 	sjmp next
@@ -15,3 +15,4 @@ next:	inc r0
 end
 
 ;The smallest hexadeciaml value will be found in the accumulator
+;More numbers can be compared by loading a higher value in r0 and loading more bytes into the memory. 
