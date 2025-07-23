@@ -1,3 +1,5 @@
+;Write a program to use the T0 of 8051 as an 8-bit counter. Display the count at Port 1
+
 org 0000h
 
 	mov tmod,#06h    ;Declare the usage of Timer 0 as a mode 2 counter
