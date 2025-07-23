@@ -7,7 +7,7 @@ back:   mov p1,a            ;Move the content of Accumulator to Port 1
 	cjne a,#0ffh,back   ;Until the Accumulator reaches #0FFH, continue stepping
 	sjmp again          ;Run the program indefinitely
 
-delay:  mov r0,#0ffh        ;Nested DJNZ Loops for implementing a delay
+delay:  mov r0,#0ffh        ;Nested DJNZ Loops for implementing a delay subroutine
 h2:     mov r1,#0ah         ;
 h1:     djnz r1,h1          ;
 	djnz r0,h2          ;
