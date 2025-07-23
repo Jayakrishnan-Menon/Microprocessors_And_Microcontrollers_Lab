@@ -25,7 +25,7 @@ again:  mov p1,#00000000b    ;
 	acall delay          ;
 	sjmp again           ;
 	
-delay:  mov r0,#0ffh         ;Nested DJNZ Loops for implementing a delay
+delay:  mov r0,#0ffh         ;Nested DJNZ Loops for implementing a delay subroutine
 l2:     mov r1,#0ffh         ;
 l1:     mov r2,#0ffh         ;
 here:   djnz r2,here         ;
