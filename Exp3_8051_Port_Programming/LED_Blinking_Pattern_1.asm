@@ -19,7 +19,7 @@ again:        mov p1,a      ;Move the value in Accumulator to Port 1
 	      acall delay   ;Call a delay to make the led blinking visible to the human eye
 	      sjmp again    ;Run the program indefinitely
 
-delay:        mov r0,#0ffh  ;Nested DJNZ Loops for implementing a delay
+delay:        mov r0,#0ffh  ;Nested DJNZ Loops for implementing a delay subroutine
 l2:           mov r1,#0ffh  ;
 l1:           mov r2,#0ffh  ;
 here:         djnz r2,here  ;
