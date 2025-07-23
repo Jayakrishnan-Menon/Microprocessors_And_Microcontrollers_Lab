@@ -13,7 +13,7 @@ again:  setb p1.0      ;Set P1.0
 	acall delay    ;Call the delay once for the 25% duty cycle
 	sjmp again     ;Run the program indefinitely
 	
-delay:  mov r0,#0ffh   ;Nested DJNZ Loops for implementing a delay
+delay:  mov r0,#0ffh   ;Nested DJNZ Loops for implementing a delay subroutine
 l1:     mov r1,#0ffh   ;
 here:   djnz r1,here   ;
 	djnz r0,l1     ;
