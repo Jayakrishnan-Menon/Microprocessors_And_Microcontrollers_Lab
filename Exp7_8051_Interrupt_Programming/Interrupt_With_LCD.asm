@@ -1,6 +1,4 @@
-;LCD interrupting
-;INTERRUPT LED
-
+;Write a program to display some text on an LCD when an interrupt occurs. display something else when no interrupt has occured 
 
 ORG 0000H
 	SJMP 0030H
