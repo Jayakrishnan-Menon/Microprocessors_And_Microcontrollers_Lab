@@ -1,9 +1,12 @@
 ;LCD interrupting
 ;INTERRUPT LED
+
+
 ORG 0000H
 	SJMP 0030H
 ORG 0030H
-	;MOV P3, #0FFH
+
+;Main Program
 	MOV IE, #10000100B
 	SETB TCON.2
 	MOV A, #38H ; 8 bit mode
@@ -30,50 +33,52 @@ Ag:	MOV A, #080H ;1st line
 	ACALL DLAY
 	SJMP Ag
 
-
 ;Command Subroutine
-CMD: CLR P3.7
-	 CLR P3.6
-	 SETB P3.5
-	 MOV P2, A
-	 ACALL DLAY
-	 CLR P3.5
-	 RET
+CMD:    CLR P3.7
+	CLR P3.6
+	SETB P3.5
+	MOV P2, A
+	ACALL DLAY
+	CLR P3.5
+	RET
+
 ;Data Subroutine
-DAT: SETB P3.7
-	 CLR P3.6
-	 SETB P3.5
-	 ;SUBB A,#40H
-	 MOV P2, A
-	 ACALL DLAY
-	 CLR P3.5
-	 RET
+DAT:    SETB P3.7
+	CLR P3.6
+	SETB P3.5
+	MOV P2, A
+	ACALL DLAY
+	CLR P3.5
+	RET
+
 ;Delay Subroutine
-DLAY: ;MOV R7, #0FH
-Back: MOV R6, #01H
-Here: DJNZ R6, Here
-	  DJNZ R7, Back
-	  RET
-;Return to LCD Initial Subroutine
-RTLCD:NOP
-L1: CLR A
+DLAY: 
+Back:   MOV R6, #01H
+Here:   DJNZ R6, Here
+	DJNZ R7, Back
+	RET
+
+;Return to LCD Subroutine
+RTLCD:  NOP
+L1:     CLR A
 	MOVC A,@A+DPTR
 	JZ OVER
-	;ADD A,#40H
 	ACALL DAT
 	ACALL DLAY
 	INC DPTR
 	SJMP L1
-OVER:RET
+OVER:   RET
 
+;Messages
 M1:DB '  NO INTERRUPT  ',0
 M2:DB '    INTERRUPT   ',0
 M3:DB '    OCCURED     ',0
 
+;Interrupt Handling
 ORG 0013H
-LJMP 0200H
+        LJMP 0200H
 ORG 0200H
-    MOV A, #080H ;1st line
+        MOV A, #080H ;1st line
 	LCALL CMD
 	LCALL DLAY
 	MOV DPTR,#M2
@@ -85,6 +90,6 @@ ORG 0200H
 	MOV DPTR,#M3
 	LCALL RTLCD
 	LCALL DLAY
-RETI
+        RETI
 
 END
