@@ -1,3 +1,4 @@
+;Write a Program to interface an LCD and a Keypad to 8051
 
            ORG 0000H                          ;ORIGIN to load program in 0H
            SJMP START                         ;short jump to label start
@@ -70,19 +71,19 @@ LCD_INITIALIZE:                               ; LCD_INITIALIZE subroutine
            MOV A,#38H                         ; initialize 16x2 LCD
            ACALL LCD_COMMAND                  ; call LCD_COMMAND subroutine
            ACALL DELAY
-		       MOV A,#0EH                         ; display on, cursor on
+	   MOV A,#0EH                         ; display on, cursor on
            ACALL LCD_COMMAND                  ; call LCD_COMMAND subroutine
            ACALL DELAY           
-		       MOV A,#01H                         ; clear LCD
+	   MOV A,#01H                         ; clear LCD
            ACALL LCD_COMMAND                  ; call LCD_COMMAND subroutine
            ACALL DELAY           
-		       MOV A,#06H                         ; shift cursor right
+	   MOV A,#06H                         ; shift cursor right
            ACALL LCD_COMMAND                  ; call LCD_COMMAND subroutine
            ACALL DELAY           
-		       MOV A,#80H                         ; force cursor to the beginning of first line
+           MOV A,#80H                         ; force cursor to the beginning of first line
            ACALL LCD_COMMAND                  ; call LCD_COMMAND subroutine
            ACALL DELAY      		   
-		       RET                                ; return from LCD_INITIALIZE subroutine
+	   RET                                ; return from LCD_INITIALIZE subroutine
 
 LCD_COMMAND:                                  ; LCD_COMMAND subroutine
            MOV P2,A                           ; copy reg A to port 2
@@ -92,6 +93,7 @@ LCD_COMMAND:                                  ; LCD_COMMAND subroutine
            ACALL DELAY                        ; give LCD sometime
            CLR P3.5                           ; E=0 for H-to-L pulse
            RET                                ; return from LCD_COMMAND subroutine
+
 LCD_DATA:                                     ; LCD_DATA subroutine
            MOV P2,A                           ; copy reg A to port 2
            SETB P3.7                          ; RS=0 for command
@@ -100,16 +102,17 @@ LCD_DATA:                                     ; LCD_DATA subroutine
            ACALL DELAY                        ; give LCD sometime
            CLR P3.5                           ; E=0 for H-to-L pulse
            RET                                ; return from LCD_DATA subroutine
-     DELAY:MOV R4,#40                         ; R4=40
-      HERE:MOV R5,#230                        ; R5=230
-     HERE1:DJNZ R5,HERE1                      ; stay until R5 becomes 0
+     
+DELAY:     MOV R4,#40                         ; R4=40
+HERE:      MOV R5,#230                        ; R5=230
+HERE1:     DJNZ R5,HERE1                      ; stay until R5 becomes 0
            DJNZ R4,HERE                       ; stay until R4 becomes 0
            RET                                ; return from DELAY subroutine
-
-
+           
 ORG 300H                                      ; ASCII look-up table for each row
-    KCODE3:DB 'C','D','E','F'                 ; row 3
-    KCODE2:DB '8','9','A','B'                 ; row 2
-    KCODE1:DB '4','5','6','7'                 ; row 1
-    KCODE0:DB '0','1','2','3'                 ; row 0
+KCODE3:    DB 'C','D','E','F'                 ; row 3
+KCODE2:    DB '8','9','A','B'                 ; row 2
+KCODE1:    DB '4','5','6','7'                 ; row 1
+KCODE0:    DB '0','1','2','3'                 ; row 0
+
 END                                           ; end of program
